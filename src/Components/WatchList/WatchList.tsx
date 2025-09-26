@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './style.css';
 import Window from '../Window/Window';
 import Player from '../Player/Player';
-
 interface WatchListProps {
 
 }
@@ -15,7 +14,7 @@ interface Player {
 }
 
 const WatchList: React.FC<WatchListProps> = () => {
-  const [worldOnline, setWorldOnline] = React.useState<Player[]>([]);
+  const [playersOnline, setPlayersOnline] = React.useState<Player[]>([]);
 
   const watchList = [
     'Paralizer Brasi',
@@ -74,21 +73,18 @@ const WatchList: React.FC<WatchListProps> = () => {
     fetch('https://api.tibiadata.com/v4/world/Ferobra')
       .then(response => response.json())
       .then(data => {
-        setWorldOnline(data.world.online_players)
+        const newList = data.world.online_players.filter((player: { name: string; }) => watchList.includes(player.name))
+        setPlayersOnline(newList)
       });
   }
 
-  const filteredPlayers = () => {
-    return worldOnline?.filter(player => watchList.includes(player.name));
-  }
-
   const onlineMembersByLevel = () => {
-    return filteredPlayers().sort((a, b) => b.level - a.level);
+    return playersOnline.sort((a, b) => b.level - a.level);
   };
 
   return (
-    <Window title={'Watch List - ' + filteredPlayers().length} isOpen={true}>
-      {worldOnline.length === 0 && 'carregando...'}
+    <Window title={'Watch List - ' + playersOnline.length} isOpen={true}>
+      {playersOnline.length === 0 && 'carregando...'}
       {onlineMembersByLevel().map((player, index) => {
         return (
           <div className="onlineMember" key={'watchlist-' + index}>
