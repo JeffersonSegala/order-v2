@@ -75,6 +75,7 @@ const WatchList: React.FC<WatchListProps> = () => {
       .then(data => {
         const newList = data.world.online_players.filter((player: { name: string; }) => watchList.includes(player.name))
         setPlayersOnline(newList)
+        document.title = `(${newList.length}) Order`;
       });
   }
 
