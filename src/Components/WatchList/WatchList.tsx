@@ -60,6 +60,8 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Junim Matamatou',
     'Jogando Pra Brincar',
     'Danielzinho Trem Bala',
+    'Veldora Tempeste',
+    'Dead Qera'
   ];
 
   useEffect(() => {
