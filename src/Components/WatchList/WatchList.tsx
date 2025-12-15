@@ -18,9 +18,11 @@ const WatchList: React.FC<WatchListProps> = () => {
 
   const watchList = [
     'Abuuuh Matacoitado',
+    'Alemao Donodeferobra',
     'Antiguedad',
     'Atos Sky Fox',
     'Bewy',
+    'Bezerra donodeferobra',
     'Blackout Supreme',
     'Caipa',
     'Chimy Rush',
@@ -47,6 +49,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Lady Miltreta',
     'Lombrard',
     'Matheeus Fortrek',
+    'Melikinha Jiraia',
     'Mustache King',
     'Nephasto Imperdoavel',
     'Menor Bigode',
