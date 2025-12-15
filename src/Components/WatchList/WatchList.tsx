@@ -23,6 +23,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Atos Sky Fox',
     'Bewy',
     'Bezerra donodeferobra',
+    'Big Byrd Pro',
     'Blackout Supreme',
     'Caipa',
     'Chimy Rush',
