@@ -72,6 +72,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Tremendola',
     'True Turbo',
     'Veldora Tempeste',
+    'Xolp',
     'Xubilubiz',
     'Zyskan',
     'Zwynmk Pride',
