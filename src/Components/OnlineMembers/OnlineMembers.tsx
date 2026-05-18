@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './style.css';
 import Window from '../Window/Window';
 import Player from '../Player/Player';
+import { useOrder } from '../../contexts/OrderContext';
 
 type Member = {
     name: string;
@@ -14,22 +15,7 @@ interface OnlineMembersProps {
 }
 
 const OnlineMembers: React.FC<OnlineMembersProps> = () => {
-    const [members, setMembers] = useState<Member[]>([]);
-
-    useEffect(() => {
-        fetchOrder();
-        const intervalId = setInterval(fetchOrder, 60000);
-        return () => clearInterval(intervalId);
-    }, []);
-
-
-    const fetchOrder = () => {
-        fetch('https://api.tibiadata.com/v4/guild/order')
-            .then(response => response.json())
-            .then(data => {
-                setMembers(data.guild.members)
-            });
-    }
+    const { members } = useOrder();
 
     const onlineMembers = () => {
         return members?.filter(member => member.status === 'online');

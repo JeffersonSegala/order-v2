@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './style.css';
 import Window from '../Window/Window';
 import Player from '../Player/Player';
+import { useOrderDocumentTitle } from '../../contexts/useOrderDocumentTitle';
 interface WatchListProps {
 
 }
@@ -61,7 +62,9 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Jogando Pra Brincar',
     'Danielzinho Trem Bala',
     'Veldora Tempeste',
-    'Dead Qera'
+    'Dead Qera',
+    'Pithegod',
+    'Pulerams'
   ];
 
   useEffect(() => {
@@ -74,12 +77,14 @@ const WatchList: React.FC<WatchListProps> = () => {
   const fetchFerobra = () => {
     fetch('https://api.tibiadata.com/v4/world/Ferobra')
       .then(response => response.json())
-      .then(data => {
-        const newList = data.world.online_players.filter((player: { name: string; }) => watchList.includes(player.name))
-        setPlayersOnline(newList)
-        document.title = `(${newList.length}) Order`;
-      });
+      .then(ferobraData => {
+        const newList = ferobraData.world.online_players.filter((player: { name: string; }) => watchList.includes(player.name));
+        setPlayersOnline(newList);
+      })
+      .catch(err => console.error('fetchFerobra error', err));
   }
+
+  useOrderDocumentTitle(playersOnline.length);
 
   const onlineMembersByLevel = () => {
     return playersOnline.sort((a, b) => b.level - a.level);
