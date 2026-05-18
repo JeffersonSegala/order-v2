@@ -4,13 +4,6 @@ import Window from '../Window/Window';
 import Player from '../Player/Player';
 import { useOrder } from '../../contexts/OrderContext';
 
-type Member = {
-    name: string;
-    status: string;
-    level: number;
-    vocation: string;
-};
-
 interface OnlineMembersProps {
 }
 
