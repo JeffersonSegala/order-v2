@@ -26,6 +26,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Atos Sky Fox',
     'Bezerra donodeferobra',
     'Big Byrd Pro',
+    'Breckie',
     'Cachacilds Mussunzis',
     'Caipa',
     'Calegod',
@@ -48,6 +49,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Ghostxsz',
     'Gohten',
     'Gorito Neverdie',
+    'Gorgonita Jackz',
     'Gui Brutal',
     'Hataz Imortal',
     'Hataz',
@@ -75,6 +77,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Lord Dhorion Bomba',
     'Luke Shardary',
     'Mage Tesla',
+    'Martur Sian',
     'Matheeus Fortrek',
     'Mathsz Hard',
     'Melikinha Jiraia',
@@ -113,7 +116,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Xolp',
     'Xubilubiz',
     'Zwynmk Pride',
-    'Zyskan'
+    'Zyskan',
   ];
 
   useEffect(() => {
