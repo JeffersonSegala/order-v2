@@ -7,6 +7,14 @@ import { useOrder } from '../../contexts/OrderContext';
 interface OnlineMembersProps {
 }
 
+function sharingMinLevel(level: number) {
+    return Math.trunc(level - level / 3);
+}
+
+function sharingMaxLevel(level: number) {
+    return Math.trunc(level + level / 2);
+}
+
 const OnlineMembers: React.FC<OnlineMembersProps> = () => {
     const { members } = useOrder();
 
@@ -17,14 +25,6 @@ const OnlineMembers: React.FC<OnlineMembersProps> = () => {
     const onlineMembersByLevel = () => {
         return onlineMembers()?.sort((a, b) => b.level - a.level);
     };
-
-    function sharingMinLevel(level: number) {
-        return Math.trunc(level - level / 3);
-    }
-
-    function sharingMaxLevel(level: number) {
-        return Math.trunc(level + level / 2);
-    }
 
     return (
         <Window title={'Membros Online - ' + onlineMembers().length} isOpen={true}>

@@ -3,6 +3,7 @@ import './style.css';
 import Window from '../Window/Window';
 import Player from '../Player/Player';
 import { useOrderDocumentTitle } from '../../contexts/useOrderDocumentTitle';
+import { useGuild } from '../../contexts/OrderContext';
 interface WatchListProps {
 
 }
@@ -14,10 +15,14 @@ interface Player {
   vocation: string;
 }
 
+type Member = Player;
+
 const WatchList: React.FC<WatchListProps> = () => {
   const [playersOnline, setPlayersOnline] = React.useState<Player[]>([]);
+  const [individualPlayersOnline, setIndividualPlayersOnline] = React.useState<Player[]>([]);
+  const janteiDominatGuild = useGuild('jantei-dominat');
 
-  const watchList = [
+  const watchListIndividualNames = new Set([
     'Abuuuh Matacoitado',
     'Alemao Donodeferobra',
     'Antiguedad',
@@ -109,15 +114,13 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Tremendola',
     'True Turbo',
     'Veldora Tempeste',
-    'Dead Qera',
     'Pithegod',
-    'Pulerams',
     'Xiinavueko',
     'Xolp',
     'Xubilubiz',
     'Zwynmk Pride',
     'Zyskan',
-  ];
+  ]);
 
   useEffect(() => {
     fetchFerobra();
@@ -125,27 +128,43 @@ const WatchList: React.FC<WatchListProps> = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  // Combine individual names + Jantei Dominat members
+  useEffect(() => {
+    const janteiOnlineMembers = janteiDominatGuild.members.filter(
+      (member: Member) => member.status === 'online'
+    );
+
+    // Combine both lists and deduplicate by name
+    const combinedPlayers = [...individualPlayersOnline];
+    const existingNames = new Set(combinedPlayers.map(p => p.name));
+
+    for (const member of janteiOnlineMembers) {
+      if (!existingNames.has(member.name)) {
+        combinedPlayers.push(member);
+      }
+    }
+
+    // Sort by level descending
+    combinedPlayers.sort((a, b) => b.level - a.level);
+    setPlayersOnline(combinedPlayers);
+  }, [individualPlayersOnline, janteiDominatGuild.members]);
 
   const fetchFerobra = () => {
     fetch('https://api.tibiadata.com/v4/world/Ferobra')
       .then(response => response.json())
       .then(ferobraData => {
-        const newList = ferobraData.world.online_players.filter((player: { name: string; }) => watchList.includes(player.name));
-        setPlayersOnline(newList);
+        const newList = ferobraData.world.online_players.filter((player: { name: string; }) => watchListIndividualNames.has(player.name));
+        setIndividualPlayersOnline(newList);
       })
       .catch(err => console.error('fetchFerobra error', err));
   }
 
   useOrderDocumentTitle(playersOnline.length);
 
-  const onlineMembersByLevel = () => {
-    return playersOnline.sort((a, b) => b.level - a.level);
-  };
-
   return (
     <Window title={'Watch List - ' + playersOnline.length} isOpen={true}>
       {playersOnline.length === 0 && 'carregando...'}
-      {onlineMembersByLevel().map((player, index) => {
+      {playersOnline.map((player, index) => {
         return (
           <div className="onlineMember" key={'watchlist-' + index}>
             <Player player={{ ...player, status: 'online' }} />&nbsp;
