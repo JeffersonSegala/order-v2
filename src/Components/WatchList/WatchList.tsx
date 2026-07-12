@@ -48,6 +48,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Elite Zarili',
     'Erwuoez',
     'Estoicismo',
+    'Farsta Magikern',
     'Fibrado Alenda',
     'Fullkareta raktinikaklet',
     'Galth Thalivan',
