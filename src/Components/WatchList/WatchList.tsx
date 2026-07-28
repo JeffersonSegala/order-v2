@@ -94,6 +94,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Nico Nico Matamil',
     'Nyck The Immortal',
     'Odin Trapaceiro',
+    'Ovuvuevuevue enyetuenwuevwe',
     'Paralizer Brasi',
     'Pittbull Jurista',
     'Pozzi Tiff',
