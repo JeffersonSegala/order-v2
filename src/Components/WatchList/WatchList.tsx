@@ -163,6 +163,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Xolpic',
     'Xopiq',
     'Xubilubiz',
+    'Zubat the Ruthless',
     'Zwynmk Pride',
     'Zyskan',
   ]);
