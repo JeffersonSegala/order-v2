@@ -3,7 +3,6 @@ import './style.css';
 import Window from '../Window/Window';
 import Player from '../Player/Player';
 import { useOrderDocumentTitle } from '../../contexts/useOrderDocumentTitle';
-import { useGuild } from '../../contexts/OrderContext';
 interface WatchListProps {
 
 }
@@ -14,8 +13,6 @@ interface Player {
   status: string;
   vocation: string;
 }
-
-type Member = Player;
 
 const WatchList: React.FC<WatchListProps> = () => {
   const [playersOnline, setPlayersOnline] = React.useState<Player[]>([]);
