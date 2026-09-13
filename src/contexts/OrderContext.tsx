@@ -34,7 +34,7 @@ export const useGuild = (guildName: string) => {
 export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [guilds, setGuilds] = useState<Record<string, GuildData>>({
     'order': { members: [], loading: true },
-    'jantei-dominat': { members: [], loading: true }
+    // 'jantei-dominat': { members: [], loading: true }
   });
 
   const updateGuildData = (guildName: string, members: Member[], loading: boolean) => {
@@ -62,7 +62,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     let mounted = true;
 
     const fetchGuild = (guildName: string) => {
-      const apiGuildName = guildName === 'jantei-dominat' ? 'jantei%20dominat' : 'order';
+      const apiGuildName = guildName;
       fetch(`https://api.tibiadata.com/v4/guild/${apiGuildName}`)
         .then(r => r.json())
         .then(data => {
@@ -80,12 +80,10 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     // Fetch both guilds on mount
     fetchGuild('order');
-    fetchGuild('jantei-dominat');
 
     // Set up interval to refetch both guilds
     const id = setInterval(() => {
       fetchGuild('order');
-      fetchGuild('jantei-dominat');
     }, 60000);
 
     return () => {

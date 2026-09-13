@@ -20,7 +20,6 @@ type Member = Player;
 const WatchList: React.FC<WatchListProps> = () => {
   const [playersOnline, setPlayersOnline] = React.useState<Player[]>([]);
   const [individualPlayersOnline, setIndividualPlayersOnline] = React.useState<Player[]>([]);
-  const janteiDominatGuild = useGuild('jantei-dominat');
 
   const watchListIndividualNames = new Set([
     'Abuuuh Matacoitado',
@@ -140,7 +139,6 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Pure Vision',
     'Quiin zera',
     'Rasit',
-    'Rei Scorpion',
     'Return of Peka',
     'Rukim Deadly',
     'Sared Ikan',
@@ -174,26 +172,11 @@ const WatchList: React.FC<WatchListProps> = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  // Combine individual names + Jantei Dominat members
   useEffect(() => {
-    const janteiOnlineMembers = janteiDominatGuild.members.filter(
-      (member: Member) => member.status === 'online'
-    );
-
-    // Combine both lists and deduplicate by name
-    const combinedPlayers = [...individualPlayersOnline];
-    const existingNames = new Set(combinedPlayers.map(p => p.name));
-
-    for (const member of janteiOnlineMembers) {
-      if (!existingNames.has(member.name)) {
-        combinedPlayers.push(member);
-      }
-    }
-
     // Sort by level descending
-    combinedPlayers.sort((a, b) => b.level - a.level);
-    setPlayersOnline(combinedPlayers);
-  }, [individualPlayersOnline, janteiDominatGuild.members]);
+    individualPlayersOnline.sort((a, b) => b.level - a.level);
+    setPlayersOnline(individualPlayersOnline);
+  }, [individualPlayersOnline]);
 
   const fetchFerobra = () => {
     fetch('https://api.tibiadata.com/v4/world/Ferobra')
