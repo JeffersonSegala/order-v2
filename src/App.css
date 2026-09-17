@@ -73,3 +73,10 @@
   flex-wrap: wrap;
 }
 
+.featuredVideo {
+  display: block;
+  max-width: 100%;
+  width: 640px;
+  height: auto;
+}
+
