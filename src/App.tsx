@@ -27,6 +27,10 @@ function App() {
                 <source src="/xolpicmin.mp4" type="video/mp4" />
                 Seu navegador não suporta a reprodução de vídeo.
               </video>
+              <video className="featuredVideo" controls preload="metadata">
+                <source src="/xolpicdara.mp4" type="video/mp4" />
+                Seu navegador não suporta a reprodução de vídeo.
+              </video>
             </Window>
           </div>
         </div>

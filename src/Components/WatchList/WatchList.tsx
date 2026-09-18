@@ -145,6 +145,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Sared Ikan',
     'Sky onxy',
     'Snowmah',
+    'Snowwmah',
     'Sponsored by Shenris',
     'Stycker',
     'Swag Er',
