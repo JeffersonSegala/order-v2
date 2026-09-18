@@ -2,7 +2,6 @@ import './App.css'
 import Header from './Components/Header';
 import OnlineMembers from './Components/OnlineMembers/OnlineMembers'
 import WatchList from './Components/WatchList/WatchList';
-import Window from './Components/Window/Window';
 import { OrderProvider } from './contexts/OrderContext';
 
 function App() {
