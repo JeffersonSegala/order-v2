@@ -20,21 +20,6 @@ function App() {
           </div>
         </div>
 
-        <div className='windowsContainer'>
-          <div style={{paddingTop: '2rem'}}>
-            <Window title="Nosso fã Nº1" isOpen={false}>
-              <video className="featuredVideo" controls preload="metadata">
-                <source src="/xolpicmin.mp4" type="video/mp4" />
-                Seu navegador não suporta a reprodução de vídeo.
-              </video>
-              <video className="featuredVideo" controls preload="metadata">
-                <source src="/xolpicdara.mp4" type="video/mp4" />
-                Seu navegador não suporta a reprodução de vídeo.
-              </video>
-            </Window>
-          </div>
-        </div>
-
       </div>
     </OrderProvider>
   )
