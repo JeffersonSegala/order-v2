@@ -105,7 +105,6 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Leozera',
     'Lombrard',
     'Lord Dhorion Bomba',
-    'Luisito El Druid',
     'Luke Shardary',
     'Luvan Howyno',
     'Mage Tesla',
