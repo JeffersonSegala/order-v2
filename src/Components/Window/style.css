@@ -46,4 +46,5 @@
   display: flex;
   gap: 3px;
   cursor: pointer;
+  white-space: nowrap;
 }
