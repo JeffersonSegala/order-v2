@@ -22,7 +22,7 @@ function App() {
 
         <div className='windowsContainer'>
           <div style={{paddingTop: '2rem'}}>
-            <Window title="Nossos fãs" isOpen={false}>
+            {/* <Window title="Nossos fãs" isOpen={false}>
               <video className="featuredVideo" controls preload="metadata">
                 <source src="/monarcadead.mp4" type="video/mp4" />
                 Seu navegador não suporta a reprodução de vídeo.
@@ -46,7 +46,7 @@ function App() {
                 Me chama no jogo que eu tiro.
                 </p>
               </div>
-            </Window>
+            </Window> */}
           </div>
         </div>
 
