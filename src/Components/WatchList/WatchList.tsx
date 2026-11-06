@@ -19,6 +19,7 @@ const WatchList: React.FC<WatchListProps> = () => {
   const [individualPlayersOnline, setIndividualPlayersOnline] = React.useState<Player[]>([]);
 
   const watchListIndividualNames = new Set([
+    'Adilson Of Drowm',
     'Amora Stark',
     'Antiguedad',
     'Aprocura',
@@ -102,6 +103,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Menina Of Impera',
     'Menor Bigode',
     'Mini Ghaaly',
+    'Moreno Dropped Ear',
     'Mustache King',
     'Nephasto Imperdoavel',
     'Nico Nico Matamil',
@@ -128,6 +130,7 @@ const WatchList: React.FC<WatchListProps> = () => {
     'Rukim Deadly',
     'Sared Ikan',
     'Sky onxy',
+    'Smiless',
     'Snowmah',
     'Snowwmah',
     'Sponsored by Shenris',
